@@ -32,6 +32,7 @@ autocmd! bufwritepost _vimrc source %
  set tabstop=4          ""设置tab键的宽度
  set softtabstop=4      ""退格键删除4空格
  set noexpandtab        ""缩进采用空格 tab用noexpandtab  空格用expandtab
+ ""set noscrollbind       "" 禁止分屏滚动
  set number             ""显示行号
  ""set textwidth=80     ""每行80个字符自动换行
  set ruler              ""显示标尺
@@ -114,9 +115,9 @@ autocmd! bufwritepost _vimrc source %
  set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
  ""Diff 模式的时候鼠标同步滚动 for Vim7.3
- if has('cursorbind')
-    set cursorbind
- end
+ ""if has('cursorbind')
+  ""  set cursorbind
+ ""end
 
  ""更改为英文
  set langmenu=english.utf-8
@@ -128,7 +129,7 @@ autocmd! bufwritepost _vimrc source %
  source $VIMRUNTIME/menu.vim
 
  ""给 Win32 下的 gVim 窗口设置透明度
- au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 226)
+ au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 220)
 
  ""F11 窗口最大化
  map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
@@ -170,11 +171,11 @@ autocmd! bufwritepost _vimrc source %
 
  ""标签翻页快捷键
  map <leader>tt :tabnew<cr>
- map <leader>tn :tabnext<cr>
- map <leader>tp :tabprevious<cr>
- map <leader>to :tabonly<cr>
- map <leader>tc :tabclose<cr>
- map <leader>tm :tabmove
+ map gn :tabnext<cr>
+ map gt :tabprevious<cr>
+ map go :tabonly<cr>
+ map gc :tabclose<cr>
+ map gm :tabmove
  nmap <C-Tab> :tabnext<cr>
 
  ""取消上下左右
@@ -351,10 +352,11 @@ let Tlist_Inc_Winwidth=0
  let g:vimrc_homepage='http://www.rankber.com'
 
  " vimwiki基本配置
- let g:vimwiki_list = [{'path': 'E:/zhaohub/wiki/',
- \ 'path_html': 'E:/zhaohub/wiki/html/',
- \ 'html_header': 'E:/zhaohub/wiki/template/header.html',
- \ 'html_footer': 'E:/zhaohub/wiki/template/footer.html',
+ let g:vimwiki_list = [{'path': 'E:/Dropbox/Dropbox/wiki/',
+ \ 'path_html': 'E:/Dropbox/Dropbox/wiki/html/',
+ \ 'html_header': 'E:/Dropbox/Dropbox/template/header.html',
+ \ 'html_footer': 'E:/Dropbox/Dropbox/template/footer.html',
+ \ 'diary_link_count': 5,
  \ 'nested_syntaxes': {'Asm': 'asm', 'C': 'c', 'C++': 'cpp','Java': 'java', 'Haskell': 'haskell', 'Lua': 'lua', 'Perl': 'perl', 'Python': 'python', 'PHP': 'php', 'HTML': 'html', 'Bash': 'sh', 'Vim': 'vim', 'Make': 'make', 'Automake': 'AUTOMAKE'},}]
 
  let g:vimwiki_use_mouse = 1
@@ -436,32 +438,6 @@ func! GotoFirstEffectiveLine()
         let l:c = l:c+1
     endwhile
     exe "normal ".l:c."Gz\<CR>"
-endf
-
-
-"直接在vim中输入run 调用浏览器访问页面  
-function! ViewInBrowser(name)   
-    let file = expand("%:p")   
-    exec ":update " . file   
-    let l:browsers = {   
-        \"cr":"D:/WebDevelopment/Browser/Chrome/Chrome.exe",   
-        \"ff":"D:/WebDevelopment/Browser/Firefox/Firefox.exe",   
-        \"op":"D:/WebDevelopment/Browser/Opera/opera.exe",   
-        \"ie":"C:/progra~1/intern~1/iexplore.exe",   
-        \"ie6":"D:/WebDevelopment/Browser/IETester/IETester.exe -ie6",   
-        \"ie7":"D:/WebDevelopment/Browser/IETester/IETester.exe -ie7",   
-        \"ie8":"D:/WebDevelopment/Browser/IETester/IETester.exe -ie8",   
-        \"ie9":"D:/WebDevelopment/Browser/IETester/IETester.exe -ie9",   
-        \"iea":"D:/WebDevelopment/Browser/IETester/IETester.exe -all"   
-    \}   
-    let htdocs='C:\\AppServ\\www\\'  
-    let strpos = stridx(file, substitute(htdocs, '\\\\', '\', "g"))   
-    if strpos == -1   
-       exec ":silent !start ". l:browsers[a:name] ." file://" . file   
-    else   
-        let file=substitute(file, htdocs, "http://localhost:81/", "g")   
-        let file=substitute(file, '\\', '/', "g")   
-        exec ":silent !start ". l:browsers[a:name] file   
-    endif  
-endfunction    
-:command Runie call ViewInBrowser("cr")  
+	endif
+	endfunction
+:set diffexpr=
