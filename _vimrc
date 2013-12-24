@@ -244,18 +244,25 @@ nmap fo :NewTemplateTab footer<cr>
 
 ""Javascript Syntax
 au FileType javascript call JavaScriptFold()
+
 ""设置css缩进
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+
 ""CSS3语法支持
 au BufRead,BufNewFile *.css set ft=css syntax=css3
+
 " 将指定文件的换行符转换成 UNIX 格式
 au FileType php,javascript,html,css,python,vim,vimwiki set ff=unix
+
 ""javascript and jquery code
 au FileType html,javascript let g:javascript_enable_domhtmlcss = 1
+
 " jquery.vim
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
 ""json
 au! BufRead,BufNewFile *.json set filetype=json
+
 ""less
 nnoremap ,q :w <BAR> !lessc % > %:t:r.css<CR><space>
 
@@ -439,5 +446,4 @@ func! GotoFirstEffectiveLine()
     endwhile
     exe "normal ".l:c."Gz\<CR>"
 	endif
-	endfunction
-:set diffexpr=
+endfunction
