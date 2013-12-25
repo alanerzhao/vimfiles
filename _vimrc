@@ -187,6 +187,16 @@ autocmd! bufwritepost _vimrc source %
  ""退出快捷键
  map Q :x<cr>
 
+ ""映射esc
+ :imap jj <Esc>
+
+ ""查找替换
+  map <C-H> :%s/
+ ""imap <C-H> <Esc><C-H>
+
+ ""alt + / 取消高亮
+ map <A-/> :nohlsearch<CR>
+
  ""全选
  map <leader>a ggVG
 
