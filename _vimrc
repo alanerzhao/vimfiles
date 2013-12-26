@@ -1,7 +1,7 @@
 " ----------------- Author  : alanerzhao -----------------"
 " ----------------- Email   : alanerzhao@gmail.com -----------------"
 " ----------------- WebSite : http://www.rankber.com -----------------"
-" ----------------- Date    : 2013-10-10 -----------------"
+" ----------------- Date    : 2013-12-10 -----------------"
 ""TODO
 ""增加了Less sass 高亮功能
 ""增加了HTML5提示
@@ -10,7 +10,6 @@
 ""移动了plugin,acp插件在acp文件夹，
 ""2013.10.10 加入了markdown语法高亮
 ""加入handlebars mustache模板支持
-""加入jquery snippets文件
 ""编辑器改用英文
 ""增加git-vim funview
 
@@ -408,6 +407,7 @@ let g:checksyntax_cmd_javascript .= ' -nofilelisting -nocontext -nosummary -nolo
  func! GetPWD()
     return substitute(getcwd(), "", "", "g")
  endf
+
  ""ctrl+g插入时间
  imap <C-g> <C-r>=GetDateStamp()<cr>
 
@@ -415,6 +415,7 @@ let g:checksyntax_cmd_javascript .= ' -nofilelisting -nocontext -nosummary -nolo
  func! GetDateStamp()
     return strftime('%Y-%m-%d')
  endfunction
+
  " 全选
  func! SelectAll()
     let s:current = line('.')
