@@ -458,3 +458,10 @@ func! GotoFirstEffectiveLine()
     exe "normal ".l:c."Gz\<CR>"
 	endif
 endfunction
+
+
+" linux:
+" set rtp+=~/.vim/bundle/vundle/
+" windows:
+set rtp+=$VIM/vimfiles/bundle/vundle/
+call vundle#rc('$VIM/vimfiles/bundle/')
