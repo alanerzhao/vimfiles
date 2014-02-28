@@ -14,6 +14,7 @@
 ""增加git-vim funview
 
 source $VIMRUNTIME/vimrc_example.vim
+"" 取消window设定
 source $VIMRUNTIME/mswin.vim
 
 
@@ -30,7 +31,7 @@ autocmd! bufwritepost _vimrc source %
  set shiftwidth=4       ""换行时行间交错4空格
  set tabstop=4          ""设置tab键的宽度
  set softtabstop=4      ""退格键删除4空格
- set noexpandtab        ""缩进采用空格 tab用noexpandtab  空格用expandtab
+ set expandtab        ""缩进采用空格 tab用noexpandtab  空格用expandtab
  ""set noscrollbind       "" 禁止分屏滚动
  set number             ""显示行号
  ""set textwidth=80     ""每行80个字符自动换行
@@ -83,6 +84,7 @@ autocmd! bufwritepost _vimrc source %
  let mapleader = ","
  let maplocalleader = ","
 
+
  "" 黓认状态栏格式
  hi StatusLine  guifg=#FFFFFF guibg=#393939 gui=none
  if version >= 700
@@ -97,7 +99,7 @@ autocmd! bufwritepost _vimrc source %
      ""exec 'set guifont='.iconv('Consolas', &enc, 'gbk').':h10:cANSI'
      ""exec 'set guifontwide='.iconv('楷体', &enc, 'gbk').':h14'
  endif
- ""配置颜色solarized  yytextmate Tomorrow-Night-Bright
+ ""配置颜色solarized  yytextmate Tomorrow-Night-Bright  Tomorrow-Night-Eighties
  if has('syntax')
      colorscheme Tomorrow-Night-Bright
  endif
@@ -128,7 +130,7 @@ autocmd! bufwritepost _vimrc source %
  source $VIMRUNTIME/menu.vim
 
  ""给 Win32 下的 gVim 窗口设置透明度
- au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 220)
+ au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 250)
 
  ""F11 窗口最大化
  map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
@@ -341,6 +343,16 @@ let g:user_emmet_expandabbr_key='<c-o>'
  let g:DoxygenToolkit_returnTag = "@return\t"
  let g:DoxygenToolkit_briefTag_funcName = "no"
  let g:DoxygenToolkit_maxFunctionProtoLines = 30
+
+" Default mapping
+ let g:multi_cursor_next_key='<C-m>'
+ let g:multi_cursor_prev_key='<C-p>'
+ let g:multi_cursor_skip_key='<C-x>'
+ let g:multi_cursor_quit_key='<Esc>'
+
+" Default highlighting (see help :highlight and help :highlight-link)
+ highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+ highlight link multiple_cursors_visual Visual 
 
 ""TagsbarToggle
 nmap <F5> :TagbarToggle<CR>
